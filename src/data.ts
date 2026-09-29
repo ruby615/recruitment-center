@@ -23,8 +23,8 @@ export function fullName(person: { firstName: string; lastName: string }) {
   return `${person.firstName} ${person.lastName}`;
 }
 
-export function initials(person: { firstName: string; lastName: string }) {
-  return `${person.firstName.charAt(0)}${person.lastName.charAt(0)}`.toUpperCase();
+export function photoUrl(file: string) {
+  return `${import.meta.env.BASE_URL}avatars/${file}`;
 }
 
 export function dealCounts(candidate: Candidate) {
@@ -104,6 +104,7 @@ const amaraCv: CvFile = {
 export const seedCandidates: Candidate[] = [
   {
     id: "cand_amara",
+    photo: "amara.jpg",
     firstName: "Amara",
     lastName: "Diallo",
     email: "amara.diallo@email.com",
@@ -147,6 +148,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_amara_1",
         name: "Aïcha Diallo",
+        photo: "aicha.jpg",
         phone: "+32 470 55 18 22",
         email: "aicha.diallo@email.com",
         matchedBy: "name",
@@ -154,6 +156,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_amara_2",
         name: "Amara D.",
+        photo: "amara.jpg",
         phone: "+32 470 11 20 01",
         email: "amara.d@email.com",
         matchedBy: "phone",
@@ -186,6 +189,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_fatima",
+    photo: "fatima.jpg",
     firstName: "Fatima",
     lastName: "El Amrani",
     email: "fatima.elamrani@email.com",
@@ -221,6 +225,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_fatima_1",
         name: "Youssef El Amrani",
+        photo: "youssef.jpg",
         phone: "+32 472 90 11 04",
         email: "youssef.elamrani@email.com",
         matchedBy: "name",
@@ -262,6 +267,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_noah",
+    photo: "noah.jpg",
     firstName: "Noah",
     lastName: "Janssen",
     email: "noah.janssen@email.com",
@@ -315,6 +321,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_elena",
+    photo: "elena.jpg",
     firstName: "Elena",
     lastName: "Popescu",
     email: "elena.popescu@email.com",
@@ -351,6 +358,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_elena_1",
         name: "Elena Popescu",
+        photo: "elena.jpg",
         phone: "+32 474 66 30 12",
         email: "e.popescu@email.com",
         matchedBy: "phone",
@@ -392,6 +400,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_malik",
+    photo: "malik.jpg",
     firstName: "Malik",
     lastName: "Benali",
     email: "malik.benali@email.com",
@@ -442,6 +451,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_malik_1",
         name: "Sara Benali",
+        photo: "sara.jpg",
         phone: "+32 476 22 10 90",
         email: "sara.benali@email.com",
         matchedBy: "name",
@@ -494,6 +504,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_ingrid",
+    photo: "ingrid.jpg",
     firstName: "Ingrid",
     lastName: "Sørensen",
     email: "ingrid.sorensen@email.com",
@@ -562,6 +573,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_omar",
+    photo: "omar.jpg",
     firstName: "Omar",
     lastName: "Haddad",
     email: "omar.haddad@email.com",
@@ -598,6 +610,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_omar_1",
         name: "Omar Haddad",
+        photo: "omar.jpg",
         phone: "+32 477 28 91 05",
         email: "o.haddad@email.com",
         matchedBy: "phone",
@@ -639,6 +652,7 @@ export const seedCandidates: Candidate[] = [
   },
   {
     id: "cand_luca",
+    photo: "luca.jpg",
     firstName: "Luca",
     lastName: "Moretti",
     email: "luca.moretti@email.com",
@@ -674,6 +688,7 @@ export const seedCandidates: Candidate[] = [
       {
         id: "rel_luca_1",
         name: "Giulia Moretti",
+        photo: "giulia.jpg",
         phone: "+32 479 12 00 48",
         email: "giulia.moretti@email.com",
         matchedBy: "name",

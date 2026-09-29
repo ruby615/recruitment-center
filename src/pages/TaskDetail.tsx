@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "../components/Modal";
-import { fullName, initials, ownerName } from "../data";
+import { fullName, ownerName, photoUrl } from "../data";
 import { useCandidates } from "../store";
 import type { AircallStatus, Candidate, CvFile, FormField } from "../types";
 
@@ -67,29 +67,33 @@ function TaskDetailBody({
       </Link>
 
       <div className="board">
-        <section className="col identity-col" aria-label="Candidate">
-          <div className="identity">
-            <div className="avatar" aria-hidden="true">
-              {initials(candidate)}
+        <section className="col identity-col" aria-label="Contact">
+          <div className="contact-block">
+            <h2>Contact</h2>
+            <div className="identity">
+              <img
+                className="avatar"
+                src={photoUrl(candidate.photo)}
+                alt=""
+              />
+              <div>
+                <p className="candidate-name">{fullName(candidate)}</p>
+                <p>{candidate.type}</p>
+                <p>{candidate.email}</p>
+                <p>{candidate.phone}</p>
+              </div>
             </div>
-            <div>
-              <p className="candidate-name">{fullName(candidate)}</p>
-              <p>{candidate.type}</p>
-              <p>{candidate.email}</p>
-              <p>{candidate.phone}</p>
-            </div>
+
+            <button type="button" className="pill pill-black pill-wide" onClick={startCall}>
+              <PhoneIcon />
+              Aircall
+            </button>
+            <p className="call-status">
+              Aircall status · {candidate.aircallStatus}
+            </p>
           </div>
 
-          <button type="button" className="pill pill-black pill-wide" onClick={startCall}>
-            <PhoneIcon />
-            Aircall
-          </button>
-          <p className="call-status">
-            Aircall status · {candidate.aircallStatus}
-          </p>
-
           <div className="cv-block">
-            <h2>Most recent CV</h2>
             <button
               type="button"
               className="cv-card"
@@ -149,6 +153,7 @@ function TaskDetailBody({
             </dl>
           </div>
 
+          <div className="center-rest">
           <div className="block">
             <h2>Past Deal</h2>
             {candidate.pastDeals.length === 0 ? (
@@ -180,14 +185,11 @@ function TaskDetailBody({
               <ul className="contact-list">
                 {candidate.relatedContacts.map((contact) => (
                   <li key={contact.id}>
-                    <div className="avatar avatar-sm" aria-hidden="true">
-                      {contact.name
-                        .split(" ")
-                        .slice(0, 2)
-                        .map((part) => part.charAt(0))
-                        .join("")
-                        .toUpperCase()}
-                    </div>
+                    <img
+                      className="avatar avatar-sm"
+                      src={photoUrl(contact.photo)}
+                      alt=""
+                    />
                     <div>
                       <p className="item-title">{contact.name}</p>
                     </div>
@@ -215,6 +217,7 @@ function TaskDetailBody({
                 ))}
               </ul>
             )}
+          </div>
           </div>
         </section>
 
@@ -455,7 +458,11 @@ function CvPaper({
 }) {
   return (
     <article className={`cv-paper${compact ? " is-compact" : ""}`}>
-      <p className="cv-kicker">Curriculum vitae</p>
+      {compact ? (
+        <p className="cv-heading">CV</p>
+      ) : (
+        <p className="cv-kicker">Curriculum vitae</p>
+      )}
       <h3>{fullName(candidate)}</h3>
       <p className="cv-role">
         {candidate.type} · {candidate.residentialLocation}

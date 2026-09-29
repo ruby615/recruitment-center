@@ -47,6 +47,7 @@ export interface RelatedContact {
   name: string;
   phone: string;
   email: string;
+  photo: string;
   matchedBy: "phone" | "name";
 }
 
@@ -88,6 +89,7 @@ export interface Candidate {
   id: string;
   firstName: string;
   lastName: string;
+  photo: string;
   email: string;
   phone: string;
   type: CandidateType;
